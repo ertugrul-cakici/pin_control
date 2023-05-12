@@ -1,16 +1,3 @@
 # pin_control
 
-A new Flutter project.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+  This project enables you to control Arduino pins using a Windows app developed in Flutter, which communicates through the serial port. You have the freedom to customize the timing and duration for opening each pin. Moreover, you can execute them sequentially in a queue or introduce delays between operations. All settings will be saved locally on your device for future use. Please contact me for any additional configurations request. Feel free to fork the project and add your own features.
