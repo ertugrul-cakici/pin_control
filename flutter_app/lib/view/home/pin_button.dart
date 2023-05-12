@@ -1,7 +1,7 @@
 import "package:flutter/material.dart";
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:pin_control/product/model/pin_model.dart';
 import 'package:pin_control/core/init/providers/all_providers.dart';
+import 'package:pin_control/models/pin_model.dart';
 
 // ignore: must_be_immutable
 class PinButton extends ConsumerWidget {

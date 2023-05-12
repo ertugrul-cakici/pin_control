@@ -2,11 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:pin_control/core/constants/enums/locale_constants.dart';
 import 'package:pin_control/core/constants/locale_setup.dart';
 import 'package:pin_control/core/init/cache/locale_manager.dart';
-import 'package:pin_control/product/model/pin_model.dart';
+import 'package:pin_control/models/pin_model.dart';
 import 'package:window_manager/window_manager.dart';
 
-class HomeViewModel extends ChangeNotifier {
-  HomeViewModel();
+class HomeNotifier extends ChangeNotifier {
+  HomeNotifier();
 
   bool get screenState =>
       LocaleManager.instance.getBool(LocaleEnums.alwaysOn.name);

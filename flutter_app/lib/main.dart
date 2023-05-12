@@ -2,7 +2,7 @@ import "package:flutter/material.dart";
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pin_control/core/init/cache/locale_manager.dart';
-import 'package:pin_control/view/home/view/home.dart';
+import 'package:pin_control/view/home/home_view.dart';
 import 'package:window_manager/window_manager.dart';
 
 void main(List<String> args) async {
@@ -13,7 +13,6 @@ void main(List<String> args) async {
   await windowManager.setClosable(false);
   await windowManager.maximize();
   await LocaleManager.preferencesInit();
-  // SerialManager.connect();
   runApp(const ProviderScope(child: App()));
 }
 
@@ -29,7 +28,7 @@ class App extends StatelessWidget {
       builder: () {
         return MaterialApp(
           theme: ThemeData.dark(),
-          home: const Home(),
+          home: const HomeView(),
         );
       },
     );

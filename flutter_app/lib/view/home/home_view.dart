@@ -3,16 +3,16 @@ import 'package:flutter_libserialport/flutter_libserialport.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pin_control/core/init/providers/all_providers.dart';
-import 'package:pin_control/view/home/view/pin_button.dart';
+import 'package:pin_control/view/home/pin_button.dart';
 
-class Home extends ConsumerStatefulWidget {
-  const Home({Key? key}) : super(key: key);
+class HomeView extends ConsumerStatefulWidget {
+  const HomeView({Key? key}) : super(key: key);
 
   @override
   ConsumerState<ConsumerStatefulWidget> createState() => _HomeState();
 }
 
-class _HomeState extends ConsumerState<Home> {
+class _HomeState extends ConsumerState<HomeView> {
   @override
   void initState() {
     ref.read(homeProvider).generatePinModels();
@@ -42,7 +42,7 @@ class _HomeState extends ConsumerState<Home> {
                 _activeMultiple(),
                 _activeQueue(),
                 TimeSettings(),
-                Text("Aktif portlar:" + SerialPort.availablePorts.toString())
+                Text("Active ports:" + SerialPort.availablePorts.toString())
               ]),
         ),
       ),
@@ -56,7 +56,7 @@ class _HomeState extends ConsumerState<Home> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const Text("Ekran kapanmasın"),
+            const Text("Do not close the screen"),
             Checkbox(
                 value: _.watch(homeProvider).screenState,
                 onChanged: _.read(homeProvider).changeScreenState)
@@ -71,7 +71,7 @@ class _HomeState extends ConsumerState<Home> {
       onTap: ref.read(homeProvider).activeMultiple,
       child: Container(
           color: Colors.black12,
-          child: const Center(child: Text("Çoklu çalıştır"))),
+          child: const Center(child: Text("Run multiple"))),
     );
   }
 
@@ -80,7 +80,7 @@ class _HomeState extends ConsumerState<Home> {
       onTap: ref.read(homeProvider).activeQueue,
       child: Container(
           color: Colors.black12,
-          child: const Center(child: Text("Kuyruk çalıştır"))),
+          child: const Center(child: Text("Work queue"))),
     );
   }
 }
@@ -103,12 +103,12 @@ class TimeSettings extends ConsumerWidget {
           TextField(
               controller: _delayController,
               onChanged: ref.read(homeProvider).setDelayTime,
-              decoration: const InputDecoration(labelText: "Aralık (ms)")),
+              decoration: const InputDecoration(labelText: "Delay (ms)")),
           TextField(
               controller: _activeController,
               onChanged: ref.read(homeProvider).setActiveTime,
               decoration:
-                  const InputDecoration(labelText: "Çalışma süresi (ms)")),
+                  const InputDecoration(labelText: "Working time (ms)")),
         ],
       ),
     );

@@ -1,9 +1,8 @@
 import "package:flutter/material.dart";
-
 import 'package:pin_control/core/constants/enums/locale_constants.dart';
 import 'package:pin_control/core/init/cache/locale_manager.dart';
 import 'package:pin_control/core/init/serial/serial_manager.dart';
-import 'package:pin_control/view/home/viewmodel/home_view_model.dart';
+import 'package:pin_control/view/home/home_notifier.dart';
 
 class PinModel extends ChangeNotifier {
   bool isSelected = false;
@@ -16,11 +15,11 @@ class PinModel extends ChangeNotifier {
   PinModel({required this.pin, required this.text});
 
   Future<void> active() async {
-    if (HomeViewModel.activePins.length < 2) {
+    if (HomeNotifier.activePins.length < 2) {
       bool success = await send("${pinText}O");
       if (success) {
         isActive = true;
-        HomeViewModel.activePins.add(this);
+        HomeNotifier.activePins.add(this);
         notifyListeners();
 
         int _time = LocaleManager.instance.getInt(LocaleEnums.activeTime.name);
@@ -34,7 +33,7 @@ class PinModel extends ChangeNotifier {
     bool success = await send("${pinText}C");
     if (success) {
       isActive = false;
-      HomeViewModel.activePins.remove(this);
+      HomeNotifier.activePins.remove(this);
       notifyListeners();
     }
   }
